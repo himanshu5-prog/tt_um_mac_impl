@@ -2,7 +2,7 @@ module flop_logic (
     input clk,
     input reset_n,
     input enable,
-    input [7:0] a,
+    input reg [7:0] a,
     output [7:0] out
 );
 

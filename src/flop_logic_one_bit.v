@@ -2,7 +2,7 @@ module flop_logic_one_bit (
     input clk,
     input reset_n,
     input enable,
-    input a,
+    input reg a,
     output out
 );
 
