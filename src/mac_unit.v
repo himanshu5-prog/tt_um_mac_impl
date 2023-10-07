@@ -18,7 +18,7 @@ module mac_unit (
     always @(posedge clk) begin
         if (!reset_n) 
             a_flop_out <= 8'b0000_0000;
-        else if (ena)
+        else if (enable)
             a_flop_out <= a;
         else
             a_flop_out <= a_flop_out;
@@ -28,7 +28,7 @@ module mac_unit (
      always @(posedge clk) begin
         if (!reset_n) 
             b_flop_out <= 8'b0000_0000;
-        else if (ena)
+        else if (enable)
             b_flop_out <= b;
         else
             b_flop_out <= b_flop_out;
@@ -38,7 +38,7 @@ module mac_unit (
     always @(posedge clk) begin
         if (!reset_n) 
             out_ff <= 8'b0000_0000;
-        else if (ena)
+        else if (enable)
             out_ff <= sum;
         else
             out_ff <= out_ff;
