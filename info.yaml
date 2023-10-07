@@ -7,6 +7,8 @@ project:
 # Source files must be in ./src and you must list each source file separately
   source_files:        
     - mac_unit.v
+    - flop_logic.v
+    - flop_logic_one_bit.v
     - tt_um_mac_unit.v 
   top_module:  "tt_um_mac_unit"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
