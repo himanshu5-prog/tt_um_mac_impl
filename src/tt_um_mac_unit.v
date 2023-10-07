@@ -14,8 +14,15 @@ module tt_um_mac_unit (
     assign uo_out = out[15:8];    
     wire [15:0] out;
     wire valid;
-    mac_unit dut (.clk(clk), .reset_n(rst_n), .enable(ena), .a(ui_in), .b(uio_in), .valid(valid), .c(out));
+    wire [7:0] a_pipe;
+    wire [7:0] b_pipe;
+    wire valid_pipe;
 
-    
+    flop_logic dut_2 (.clk(clk), .reset_n(rst_n), .enable(ena), .a(ui_in), .out(a_pipe));
+    flop_logic dut_3 (.clk(clk), .reset_n(rst_n), .enable(ena), .a(uio_in), .out(b_pipe));
+
+    mac_unit dut_1 (.clk(clk), .reset_n(rst_n), .enable(ena), .a(a_pipe), .b(b_pipe), .valid(valid), .c(out));
+
+    flop_logic_one_bit dut_4 (.clk(clk), .reset_n(rst_n), .enable(ena), .a(valid), .out(valid_pipe));
 
 endmodule
