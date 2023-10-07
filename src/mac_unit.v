@@ -13,7 +13,8 @@ module mac_unit (
 
     reg [7:0] a_flop_out;
     reg [7:0] b_flop_out;
-    reg [7:0] out_ff;
+    reg [15:0] out_ff;
+    reg valif_ff;
     // Flop for port a
     always @(posedge clk) begin
         if (!reset_n) 
@@ -36,16 +37,20 @@ module mac_unit (
 
     //Flop for output
     always @(posedge clk) begin
-        if (!reset_n) 
-            out_ff <= 8'b0000_0000;
-        else if (enable)
+        if (!reset_n) begin
+            out_ff <= 16'b0000_0000_0000_0000;
+            valid_ff <= 1'b0;
+        end else if (enable) begin
             out_ff <= sum;
-        else
-            out_ff <= out_ff;
+            valid_ff <= val;
+        end else begin
+            out_ff <= 16'b0000_0000_0000_0000;
+            valid_ff <= 1'b0;
+        end
     end
     //-------------------------------
     assign c = out_ff;
-    assign valid = val;
+    assign valid = valid_ff;
 
     always @(posedge clk) begin
         if (!reset_n) begin
