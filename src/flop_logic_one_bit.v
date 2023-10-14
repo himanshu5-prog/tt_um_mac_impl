@@ -3,7 +3,7 @@ module flop_logic_one_bit (
     input reset_n,
     input enable,
     input reg a,
-    output out
+    output reg out
 );
 
     always@(posedge clk) begin

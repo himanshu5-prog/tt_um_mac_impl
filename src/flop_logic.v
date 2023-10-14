@@ -3,7 +3,7 @@ module flop_logic (
     input reset_n,
     input enable,
     input reg [7:0] a,
-    output [7:0] out
+    output reg [7:0] out
 );
 
     always@(posedge clk) begin
